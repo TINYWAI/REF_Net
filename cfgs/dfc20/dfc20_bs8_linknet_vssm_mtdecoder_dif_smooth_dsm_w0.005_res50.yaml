@@ -1,0 +1,70 @@
+TRAIN:
+    CKPT: experiment/dfc20
+    MODAL: opt_sar
+    WORKERS: 2
+    BATCH_SIZE: 8
+    LOAD_PATH:
+    DATASETS: dfc20
+    VAL: True
+    TEST: True
+    DEVICE_IDS: [1]
+    SEED: 1
+VAL:
+    DATALIST: val
+    MODAL: opt_sar
+    SAVE_PRED: False
+    SAVE_VIS: False
+MODEL:
+    type: LinkMamba
+    classes: 9
+    # optical
+    opt_encoder_name: resnet50
+    opt_encoder_weights: imagenet
+    opt_custom_weights:
+    opt_in_channels: 3
+    opt_encoder_depth: 5
+    # sar
+    sar_encoder_name: resnet50
+    sar_encoder_weights: imagenet
+    sar_custom_weights:
+    sar_in_channels: 2
+    sar_encoder_depth: 5
+    # decoder
+    decoder_type: MTMambaFusionDecoder_smooth
+    decoder_fuse_method: DiffShareMamba
+    decoder_channels: 128
+    upsampling: 2
+    multi_seg: True
+MAIN_LOSS:
+    TYPE: CrossEntropyLoss
+    WEIGHT:
+    IGNORE: 0
+EXTRA_LOSS:
+    TYPE: AuxCrossEntropyLoss2d
+    USE_DICE: False
+    KEYS: ['opt_logits', 'sar_logits']
+    WEIGHT: 0.005
+    IGNORE: 0
+SOLVER:
+    TYPE: IterPolyLRScheduler
+    MAX_ITER: 70000
+    BASE_LR: 0.0005
+    MIN_LR: 0
+    POWER: 0.9
+    OPTIM: AdamW
+    MOMENTUM: 0.9
+    WEIGHT_DECAY: 0.0005
+    SNAPSHOT: 2000
+    PRINT_FREQ: 10
+AUG:
+    INPUT_SIZE: [256, 256]
+    RANDOM_ROTATION: True
+    RANDOM_HFLIP: True
+    RANDOM_AFFINE: False
+TEST:
+    DEVICE_IDS: [0]
+    BATCH_SIZE: 8
+    DATALIST: test
+    ITER: [145000]
+    SAVE_PRED: False
+    SAVE_VIS: False

@@ -19,34 +19,36 @@ Extensive experimental results obtained on three public datasets demonstrate the
   <img src="figs/pipeline.jpg" alt="pipeline" width="80%">
 </p>
 
-### MDF-VSS block
+### MDF-VSS Block
+
 <p align="center">
-  <img src="figs/MDF-VSS block.jpg" alt="pipeline" width="40%">
+  <img src="figs/MDF-VSS block.jpg" alt="MDF-VSS block" width="50%">
 </p>
 
-[//]: # (## Getting Started)
+## Getting Started
 
-[//]: # ()
-[//]: # (### Confirm your code environment)
+### Requirements
 
-[//]: # ()
-[//]: # ()
-[//]: # (### Train on DFC20 dataset)
+The code depends on `selective_scan==0.0.2`, and the source file is located in `core/models/vmamba/kernels`. 
+For detailed instructions on compiling, please refer to the VMamba repository:
 
-[//]: # ()
-[//]: # (```bash)
+- [VMamba Paper](https://arxiv.org/abs/2401.10166)
+- [VMamba GitHub Repository](https://github.com/MzeroMiko/VMamba)
 
-[//]: # (python3 engine/train_val.py --config )
+### Training on DFC20 Dataset
 
-[//]: # (```)
+To train the model on the DFC20 dataset, use the following command:
 
+```bash
+python3 engine/train_val.py --config cfgs/dfc20/dfc20_bs8_linknet_vssm_mtdecoder_dif_smooth_dsm_w0.005_res50.yaml
+```
 
 
 ## Citation
 
-If this work is helpful to you, please cite it as:
+If this work is helpful to your research, please cite it as follows:
 ```
-@ARTICLE{11090158,
+@ARTICLE{wei2025retain,
   author={Wei, Tianyu and Chen, He and Liu, Wenchao and Chen, Liang and Wang, Jue},
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
   title={Retain and Enhance Modality-Specific Information for Multimodal Remote Sensing Image Land Use/Land Cover Classification}, 
@@ -58,11 +60,12 @@ If this work is helpful to you, please cite it as:
 ```
 If you have any question, please email to me (weity@bit.edu.cn).
 
-[//]: # (## Acknowledgment)
 
-[//]: # ()
-[//]: # (This code is based on Segmentation Models Pytorch &#40;[code]&#40;https://github.com/qubvel-org/segmentation_models.pytorch&#41;&#41; )
+## Acknowledgment
 
-[//]: # (and VMamba &#40;[paper]&#40;https://arxiv.org/abs/2401.10166&#41;, [code]&#40;https://github.com/MzeroMiko/VMamba&#41;&#41;.)
+This project is based on the following works:
 
-[//]: # (Thanks for their excellent works.)
+- Segmentation Models Pytorch ([Github Code](https://github.com/qubvel-org/segmentation_models.pytorch)) 
+- VMamba ([Paper](https://arxiv.org/abs/2401.10166), [Github Code](https://github.com/MzeroMiko/VMamba))
+
+Thanks for their excellent works.
