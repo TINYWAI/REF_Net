@@ -54,16 +54,6 @@ class ResNetEncoder(ResNet, EncoderMixin):
             self.layer4,
         ]
 
-    def get_stages_temp(self):
-        return [
-            nn.Identity(),
-            nn.Sequential(self.conv1, self.bn1, self.relu),
-            nn.Sequential(self.layer1),
-            self.layer2,
-            self.layer3,
-            self.layer4,
-        ]
-
     def forward(self, x):
         stages = self.get_stages()
 

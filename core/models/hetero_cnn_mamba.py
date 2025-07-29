@@ -8,7 +8,7 @@ import smp
 from smp.encoders import get_encoder
 from smp.base import initialization as init
 from smp.base import SegmentationHead
-from .vmamba.vmamba import VSSBlock, Permute
+from .vmamba.vmamba import VSSM, LayerNorm2d, VSSBlock, Permute
 
 current_module = sys.modules[__name__]
 
@@ -123,7 +123,6 @@ class LinkMamba(nn.Module):
             custom_weights=self.cfg.custom_weights if 'custom_weights' in self.cfg else None
         )
         out_channels = list(self.opt_encoder.out_channels)
-
         self.decoder = MTMambaFusionDecoder_smooth(
             encoder_dims=out_channels,
             decoder_channels=cfg.decoder_channels,
@@ -147,7 +146,6 @@ class LinkMamba(nn.Module):
                 in_channels=decoder_channels, out_channels=self.cfg.classes,
                 kernel_size=1, upsampling=self.cfg.upsampling,
             )
-
         self.initialize()
 
     def initialize(self):
