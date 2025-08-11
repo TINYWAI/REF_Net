@@ -53,10 +53,11 @@ If this work is helpful to your research, please cite it as follows:
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
   title={Retain and Enhance Modality-Specific Information for Multimodal Remote Sensing Image Land Use/Land Cover Classification}, 
   year={2025},
-  pages={1-1},
-  keywords={Optical imaging;Decoding;Optical sensors;Context modeling;Optical reflection;Land surface;Computational modeling;Adaptive optics;Visualization;Synthetic aperture radar;Multimodal;modality-specific information;land use/land cover classification;remote sensing;optical;synthetic aperture radar (SAR)},
+  volume={63},
+  number={},
+  pages={1-18},
+  keywords={Optical imaging;Decoding;Optical sensors;Context modeling;Optical reflection;Land surface;Computational modeling;Adaptive optics;Visualization;Synthetic aperture radar;Land use/land cover (LULC) classification;modality-specific information;multimodal;optical;remote sensing (RS);synthetic aperture radar (SAR)},
   doi={10.1109/TGRS.2025.3591926}}
-
 ```
 If you have any question, please email to me (weity@bit.edu.cn).
 
